@@ -143,9 +143,13 @@ $endif$
 $if(title)$
 \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
 $endif$
-$if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+$for(author)$
+$if(author.name)$
+$author.name$$if(author.affiliation)$ ($author.affiliation$)$endif$
+$else$
+$author$
 $endif$
+$endfor$
 \date{$date$}
 $for(header-includes)$
 $header-includes$
