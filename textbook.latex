@@ -141,15 +141,19 @@ $if(verbatim-in-note)$
 $endif$
 
 $if(title)$
+$if(title.main)$
+\title{$title.main$$if(title.subtitle)$\\\vspace{0.5em}(\large $title.subtitle$)$endif$}
+$else$
 \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
 $endif$
-$for(author)$
+$endif$
+\author{$for(author)$
 $if(author.name)$
 $author.name$$if(author.affiliation)$ ($author.affiliation$)$endif$
 $else$
 $author$
 $endif$
-$endfor$
+$endfor$}
 \date{$date$}
 $for(header-includes)$
 $header-includes$
