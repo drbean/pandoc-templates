@@ -140,18 +140,22 @@ $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 
-$if(title)$
+\title{$for(title)$
 $if(title.main)$
-\title{$title.main$$if(title.subtitle)$\\\vspace{0.5em}(\large $title.subtitle$)$endif$}
+\huge $title.main$
+$if(title.subtitle)$
+\\\vspace{0.5em}$title.subtitle$
+$endif$
 $else$
-\title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
+$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$
 $endif$
-$endif$
+$endfor$}
+
 \author{$for(author)$
 $if(author.name)$
-$author.name$$if(author.affiliation)$ ($author.affiliation$)$endif$
+$author.name$$if(author.affiliation)$ ($author.affiliation$)$endif$ \and
 $else$
-$author$
+$author$ \and
 $endif$
 $endfor$}
 \date{$date$}
