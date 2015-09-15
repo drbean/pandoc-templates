@@ -41,6 +41,8 @@ $endif$
 $if(CJKmainfont)$
     \usepackage{xeCJK}
     \setCJKmainfont[$CJKoptions$]{$CJKmainfont$}
+    \setCJKmonofont[$CJKoptions$]{$CJKmonofont$}
+    \CJKfamily{$CJKfamily$}
 $endif$
 \fi
 % use upquote if available, for straight quotes in verbatim environments
