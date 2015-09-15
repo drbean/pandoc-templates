@@ -19,6 +19,12 @@ $endif$
   \usepackage{fontspec,xltxtra,xunicode}
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \newcommand{\euro}{€}
+  $if(CJKmainfont)$
+      \usepackage{xeCJK}
+      \setCJKmainfont[$CJKoptions$]{$CJKmainfont$}
+      \setCJKmonofont[$CJKoptions$]{$CJKmonofont$}
+      \CJKfamily{$CJKfamily$}
+  $endif$
 \else
   \ifluatex
     \usepackage{fontspec}
@@ -121,12 +127,6 @@ $if(lang)$
   \usepackage{polyglossia}
   \setmainlanguage{$mainlang$}
   \setotherlanguages{$for(otherlang)$$otherlang$$sep$,$endfor$}
-  $if(CJKmainfont)$
-      \usepackage{xeCJK}
-      \setCJKmainfont[$CJKoptions$]{$CJKmainfont$}
-      \setCJKmonofont[$CJKoptions$]{$CJKmonofont$}
-      \CJKfamily{$CJKfamily$}
-  $endif$
 \else
   \usepackage[shorthands=off,$lang$]{babel}
 \fi
