@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <!-- Latest compiled and minified CSS from https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <!-- https://bootstrapcreative.com/bootstrap-text-sizes/ -->
   <link href="https://fonts.googleapis.com/css?family=Courier New" rel=“stylesheet”>
 $for(author-meta)$
