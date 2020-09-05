@@ -14,6 +14,8 @@ $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
 $endif$
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Courier New" rel=“stylesheet”>
+    <link rel="stylesheet" href="font.css" type="text/css">
   <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
   <style>
     $styles.html()$
