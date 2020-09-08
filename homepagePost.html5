@@ -13,7 +13,9 @@ $endif$
 $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
 $endif$
+    <!-- from https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- https://bootstrapcreative.com/bootstrap-text-sizes/ -->
     <link href="https://fonts.googleapis.com/css?family=Courier New" rel=“stylesheet”>
     <link rel="stylesheet" href="font.css" type="text/css">
   <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
