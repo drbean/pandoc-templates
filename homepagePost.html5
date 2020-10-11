@@ -62,7 +62,6 @@ $endif$
 $table-of-contents$
 </nav>
 $endif$
-<button onclick="window.history.go(-1)">Back to your previous page</button>
 $body$
 $for(include-after)$
 $include-after$
