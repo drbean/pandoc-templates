@@ -71,10 +71,41 @@ $endif$
 $table-of-contents$
 </nav>
 $endif$
+<header id="title-block-header">
+</header>
+<style>
+body {
+  background-image: url('fade_fill_splash_toefl.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: courier,helvetica,arial,;
+  font-size: 24px;
+  color: blue;
+}
+
+#container {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
+#content {
+  flex: 0 0 360px;
+  color: black;
+  max-width: 100%;
+}
+</style>
+<div id="container">
+<div id="content">
 $body$
 $for(include-after)$
 $include-after$
 $endfor$
+</div>
+</div>
 </div>
 </body>
 </html>
