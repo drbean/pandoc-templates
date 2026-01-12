@@ -62,6 +62,24 @@ $endif$
 $for(beameroption)$
 \setbeameroption{$beameroption$}
 $endfor$
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+$if(section-titles)$
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+$endif$
+$fonts.latex()$
 $-- Set Beamer theme before user font settings so they can override theme
 $if(theme)$
 \usetheme[$for(themeoptions)$$themeoptions$$sep$,$endfor$]{$theme$}
@@ -81,24 +99,7 @@ $endif$
 $if(outertheme)$
 \useoutertheme[$for(outerthemeoptions)$$outerthemeoptions$$sep$,$endfor$]{$outertheme$}
 $endif$
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
-$if(section-titles)$
-\AtBeginPart{
-  \frame{\partpage}
-}
-\AtBeginSection{
-  \ifbibliography
-  \else
-    \frame{\sectionpage}
-  \fi
-}
-\AtBeginSubsection{
-  \frame{\subsectionpage}
-}
-$endif$
-$fonts.latex()$
+$font-settings.latex()$
 $common.latex()$
 $for(header-includes)$
 $header-includes$
@@ -107,12 +108,12 @@ $after-header-includes.latex()$
 $hypersetup.latex()$
 
 $if(title)$
-\title$if(shorttitle)$[$shorttitle$]$endif${$title$$if(thanks)$\thanks{$thanks$}$endif$}
+\title$if(shorttitle)$[$shorttitle$]$endif${\texorpdfstring{$title$}{$title-meta$}$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
 $if(subtitle)$
-\subtitle$if(shortsubtitle)$[$shortsubtitle$]$endif${$subtitle$}
+\subtitle$if(shortsubtitle)$[$shortsubtitle$]$endif${\texorpdfstring{$subtitle$}{$subtitle-meta$}}
 $endif$
-\author$if(shortauthor)$[$shortauthor$]$endif${$for(author)$$author$$sep$ \and $endfor$}
+\author$if(shortauthor)$[$shortauthor$]$endif${\texorpdfstring{$for(author)$$author$$sep$ \and $endfor$}{$author-meta$}}
 \date$if(shortdate)$[$shortdate$]$endif${$date$}
 $if(institute)$
 \institute$if(shortinstitute)$[$shortinstitute$]$endif${$for(institute)$$institute$$sep$ \and $endfor$}
@@ -177,6 +178,9 @@ $else$
 $endif$
 $endif$
 \begin{frame}[allowframebreaks]{$biblio-title$}
+$if(nocite-ids)$
+  \nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
+$endif$
   \bibliographytrue
   \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 \end{frame}
@@ -185,6 +189,9 @@ $endif$
 $endif$
 $if(biblatex)$
 \begin{frame}[allowframebreaks]{$biblio-title$}
+$if(nocite-ids)$
+  \nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
+$endif$
   \bibliographytrue
   \printbibliography[heading=none]
 \end{frame}

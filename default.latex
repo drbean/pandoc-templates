@@ -1,5 +1,11 @@
 $passoptions.latex()$
 \documentclass[
+$for(babel-otherlangs)$
+  $babel-otherlangs$,
+$endfor$
+$if(babel-lang)$
+  $babel-lang$,
+$endif$
 $if(fontsize)$
   $fontsize$,
 $endif$
@@ -18,6 +24,9 @@ $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
 \usepackage{amsmath,amssymb}
+$if(cancel)$
+\usepackage{cancel}
+$endif$
 $--
 $-- section numbering
 $--
@@ -27,12 +36,26 @@ $else$
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 $endif$
 $fonts.latex()$
+$font-settings.latex()$
 $common.latex()$
 $for(header-includes)$
 $header-includes$
 $endfor$
 $after-header-includes.latex()$
 $hypersetup.latex()$
+$if(pdf-trailer-id)$
+
+\ifXeTeX
+\special{pdf:trailerid [ $pdf-trailer-id$ ]}
+\fi
+\ifPDFTeX
+\pdftrailerid{}
+\pdftrailer{/ID [ $pdf-trailer-id$ ]}
+\fi
+\ifLuaTeX
+\pdfvariable trailerid {[ $pdf-trailer-id$ ]}
+\fi
+$endif$
 
 $if(title)$
 \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
@@ -72,7 +95,9 @@ $if(toc-title)$
 $endif$
 {
 $if(colorlinks)$
-\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+$if(toccolor)$
+\hypersetup{linkcolor=$toccolor$}
+$endif$
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
 \tableofcontents
@@ -94,6 +119,9 @@ $body$
 
 $if(has-frontmatter)$
 \backmatter
+$endif$
+$if(nocite-ids)$
+\nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
 $endif$
 $if(natbib)$
 $if(bibliography)$
